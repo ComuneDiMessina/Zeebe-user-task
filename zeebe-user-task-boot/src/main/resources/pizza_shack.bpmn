@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0yflk2s" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.8.0">
+  <bpmn:process id="pizza_shack" name="pizza shack" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0zy3tha</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0zy3tha" sourceRef="StartEvent_1" targetRef="Task_0leh6gu" />
+    <bpmn:sequenceFlow id="SequenceFlow_0w3hpq2" sourceRef="Task_0leh6gu" targetRef="EndEvent_1jezkzn" />
+    <bpmn:endEvent id="EndEvent_1jezkzn">
+      <bpmn:incoming>SequenceFlow_0w3hpq2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Task_0leh6gu" name="eat pizza">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="user" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="candidateGroups" value="admin,user" />
+          <zeebe:header key="candidateUsers" value="m.rossi,r.bianchi" />
+          <zeebe:header key="assignee" value="m.rossi" />
+          <zeebe:header key="description" value="a demo bpmn" />
+          <zeebe:header key="jsonSchema" value="{&#34;$schema&#34;:&#34;https://json-schema.org/draft/2019-09/schema&#34; }" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0zy3tha</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0w3hpq2</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="pizza_shack">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zy3tha_di" bpmnElement="SequenceFlow_0zy3tha">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0w3hpq2_di" bpmnElement="SequenceFlow_0w3hpq2">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="422" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1jezkzn_di" bpmnElement="EndEvent_1jezkzn">
+        <dc:Bounds x="422" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_0nvp6dm_di" bpmnElement="Task_0leh6gu">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

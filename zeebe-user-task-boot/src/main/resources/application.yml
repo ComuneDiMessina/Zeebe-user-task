@@ -1,0 +1,46 @@
+server:
+  port: 8282
+  servlet:
+    context-path: /usertask
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/prb_db
+    username: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+zeebe:
+  client:
+    broker:
+      gatewayAddress: localhost:26500
+    security:
+      plaintext: true
+    worker:
+      defaultName: zeebe-user-task
+      defaultType: user
+
+ljsa:
+  oidc:
+    issuer-key: https://spid-dev.impleme.giottolabs.com:443/oauth2/token
+    roles-key: groups
+    subject-key: sub
+    url-jwk-provider: https://spid-dev.impleme.giottolabs.com/oauth2/jwks
+  profilemanager:
+    contact-point: localhost:9090
+    enabled: true
+    micro-service-id: e99cd85b-eaa3-4133-9c08-b49c369c7665
+    security:
+      plaintext: true
+  skip-urls: /usertask/swagger-ui.html**,/usertask/v2/api-docs,/usertask/webjars/**,/usertask/swagger-resources/**,/usertask/notifications/**
+  ssl-validation: false
